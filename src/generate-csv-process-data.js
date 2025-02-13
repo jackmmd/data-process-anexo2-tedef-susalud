@@ -1,8 +1,8 @@
 const { getListTramas } = require('./functions/process-data')
-const dfac_path = "./dfac_20461665820_00009153_0029878_20250121.txt"
-const date_path = "./date_20461665820_00009153_0029878_20250121.txt"
-const dser_path = './dser_20461665820_00009153_0029878_20250121.txt'
-const dfar_path = './dfar_20461665820_00009153_0029878_20250121.txt'
+const dfac_path = "./dfac_20461665820_00009153_40001_0029878_202501_20250121.txt"
+const date_path = "./date_20461665820_00009153_40001_0029878_202501_20250121.txt"
+const dser_path = './dser_20461665820_00009153_40001_0029878_202501_20250121.txt'
+const dfar_path = './dfar_20461665820_00009153_40001_0029878_202501_20250121.txt'
 
 const dfac_fields = [
     { number_field: 1, field: "Fecha de envío", length: 8, initial_position: 1 },
@@ -136,18 +136,19 @@ const dfar_fields = [
     { number_field: 4, field: "Número de Documento de Pago", length: 12, initial_position: 22 },
     { number_field: 5, field: "Correlativo de la prestación", length: 5, initial_position: 34 },
     { number_field: 6, field: "Correlativo de los Productos de Farmacia de la atención", length: 4, initial_position: 39 },
-    { number_field: 7, field: "Catálogo de Producto de Farmacia", length: 1, initial_position: 43 },
-    { number_field: 8, field: "Código de Producto Farmacia", length: 15, initial_position: 44 },
-    { number_field: 9, field: "Código de producto del observatorio de medicamentos de la DIGEMID", length: 6, initial_position: 59 },
-    { number_field: 10, field: "Fecha de Dispensación de Farmacia", length: 8, initial_position: 65 },
+    { number_field: 7, field: "Tipo de producto", length: 1, initial_position: 43 },
+    { number_field: 7, field: "Catálogo de Producto de Farmacia", length: 1, initial_position: 44 },
+    { number_field: 8, field: "Código de Producto Farmacia", length: 15, initial_position: 45 },
+    { number_field: 9, field: "Código de producto del observatorio de medicamentos de la DIGEMID", length: 6, initial_position: 58 },
+    { number_field: 10, field: "Fecha de Dispensación de Farmacia", length: 8, initial_position: 66 },
     { number_field: 11, field: "Cantidad de Venta del Producto", length: 7, initial_position: 73 },
-    { number_field: 12, field: "Monto Unitario sin Impuesto (*)", length: 12, initial_position: 80 },
-    { number_field: 13, field: "Copago del Producto de Farmacia (*)", length: 12, initial_position: 92 },
-    { number_field: 14, field: "Monto(s) Presentado(s) de (los) Producto(s) de Farmacia (*)", length: 12, initial_position: 104 },
-    { number_field: 15, field: "Monto(s) No Cubierto(s) de (los) Producto(s) de Farmacia (*)", length: 12, initial_position: 116 },
-    { number_field: 16, field: "Diagnóstico Asociado al Producto de Farmacia", length: 5, initial_position: 128 },
-    { number_field: 17, field: "Productos Exento de IGV", length: 1, initial_position: 133 },
-    { number_field: 18, field: "Guía de farmacia", length: 12, initial_position: 134 },
+    { number_field: 12, field: "Monto Unitario sin Impuesto (*)", length: 12, initial_position: 74 },
+    { number_field: 13, field: "Copago del Producto de Farmacia (*)", length: 12, initial_position: 86 },
+    { number_field: 14, field: "Monto(s) Presentado(s) de (los) Producto(s) de Farmacia (*)", length: 12, initial_position: 98 },
+    { number_field: 15, field: "Monto(s) No Cubierto(s) de (los) Producto(s) de Farmacia (*)", length: 12, initial_position: 110 },
+    { number_field: 16, field: "Diagnóstico Asociado al Producto de Farmacia", length: 5, initial_position: 122 },
+    { number_field: 17, field: "Productos Exento de IGV", length: 1, initial_position: 127 },
+    { number_field: 18, field: "Guía de farmacia", length: 12, initial_position: 128 },
 ]
 getListTramas(dfac_path,dfac_fields)
 getListTramas(date_path,date_fields)
