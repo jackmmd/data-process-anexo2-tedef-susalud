@@ -4,12 +4,18 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev":"node src/generate-csv-process-data.js"
+    "anexo1":"node src/generate-csv-process-data-anexo1.js",
+    "anexo2": "node src/generate-csv-process-data-anexo2.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "event-stream": "^4.0.1"
+    "ejs": "^3.1.10",
+    "event-stream": "^4.0.1",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.9"
   }
 }

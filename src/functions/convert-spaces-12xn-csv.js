@@ -26,11 +26,4 @@ var s = fs.createReadStream(path)
             line+="\n" 
             end_string += line
         })
-        // fs.writeFile(`${path.slice(0,4)}.csv`,end_string,error=>{
-        //     if(error){
-        //         console.log("Ocurrió un error")
-        //     }else{
-        //         console.log("Archivo creado correctamente")
-        //     }
-        // })
     });

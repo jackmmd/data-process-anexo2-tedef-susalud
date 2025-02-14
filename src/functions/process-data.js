@@ -1,7 +1,7 @@
 const { readTrama } = require('./read-trama')
 const {createFile} = require('./create-file')
 
-async function getListTramas(path_file_trama,fields) {
+async function getListTramas(path_file_trama,fields,file_name) {
     const trama_list = await readTrama(path_file_trama)
     let data_csv = ""
     fields.forEach(field=>{
@@ -19,6 +19,20 @@ async function getListTramas(path_file_trama,fields) {
         })
         data_csv += "\n"
     })
-    createFile(`procesado-${path_file_trama.slice(2,6)}.csv`,data_csv)
+    createFile(`procesado-${file_name}.csv`,data_csv)
 }
-module.exports = { getListTramas }
+let data = []
+async function getListTramas2(path_file_trama,fields) {
+    const trama_list = await readTrama(path_file_trama)
+    let item = {}
+    trama_list.forEach((row_trama) => {
+        fields.forEach((field) => {
+            const field_value = row_trama.slice(field.initial_position - 1, (field.initial_position - 1) + field.length)
+            item[field.field] = field_value
+        })
+        data.push(item)
+        item = {}
+    })
+    return data
+}
+module.exports = { getListTramas,getListTramas2 }

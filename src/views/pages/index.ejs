@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <%- include('../partials/head'); %>
+</head>
+
+<body>
+  <table>
+    <thead>
+      <tr>
+        <% columns.forEach(function(column) {%>
+          <th class="overflow-x-scroll"><p><%= column.field %></p></th>
+        <% }); %>
+      </tr>
+    </thead>
+    <tbody>
+      <% data.forEach(function(row,index) {%>
+        <% columns.forEach(function(column) {%>
+            <td><%= row[column.field] %></td>
+            <% }); %>
+          </tr>
+        <% }); %>
+    </tbody>
+  </table>
+</body>
+
+</html>

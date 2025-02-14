@@ -1,9 +1,8 @@
 const { getListTramas } = require('./functions/process-data')
-const dfac_path = "./dfac_20461665820_00009153_40001_0029878_202501_20250121.txt"
-const date_path = "./date_20461665820_00009153_40001_0029878_202501_20250121.txt"
-const dser_path = './dser_20461665820_00009153_40001_0029878_202501_20250121.txt'
-const dfar_path = './dfar_20461665820_00009153_40001_0029878_202501_20250121.txt'
-
+const dfac_path = "./lotes/lote_29878/dfac_20461665820_00009153_40001_0029878_202501_20250121.txt"
+const date_path = "./lotes/lote_29878/date_20461665820_00009153_40001_0029878_202501_20250121.txt"
+const dser_path = './lotes/lote_29878/dser_20461665820_00009153_40001_0029878_202501_20250121.txt'
+const dfar_path = './lotes/lote_29878/dfar_20461665820_00009153_40001_0029878_202501_20250121.txt'
 const dfac_fields = [
     { number_field: 1, field: "Fecha de envío", length: 8, initial_position: 1 },
     { number_field: 2, field: "Hora de Envío", length: 6, initial_position: 9 },
@@ -35,7 +34,7 @@ const dfac_fields = [
     { number_field: 28, field: "Fecha de la Nota", length: 8, initial_position: 225 },
     { number_field: 29, field: "Motivo de la Nota", length: 1, initial_position: 233 },
     { number_field: 30, field: "Fecha del primer envio del documento facturador", length: 8, initial_position: 234 },
-    { number_field: 31, field: "Indicador de Factura Global", length: 31, initial_position: 242 },
+    { number_field: 31, field: "Indicador de Factura Global", length: 1, initial_position: 242 },
     { number_field: 32, field: "Código IAFAS que remite información a SUSALUD", length: 5, initial_position: 243 },
     { number_field: 33, field: "Periodo de envío a  SUSALUD", length: 6, initial_position: 248 },
     { number_field: 34, field: "Fecha de Recepción de la Transacción Electrónica", length: 8, initial_position: 254 },
@@ -43,8 +42,8 @@ const dfac_fields = [
     { number_field: 36, field: "Total Liquidado por las IAFAS", length: 12, initial_position: 270 },
     { number_field: 37, field: "Número de Liquidación asignado por la IAFAS", length: 14, initial_position: 282 },
     { number_field: 38, field: "Fecha de Liquidación", length: 8, initial_position: 296 },
-    { number_field: 38, field: "Código de IPRESS que remite información a SUSALUD", length: 8, initial_position: 243 },
-    { number_field: 38, field: "Periodo de envío a  SUSALUD", length: 6, initial_position: 2951 },
+    // { number_field: 32, field: "Código de IPRESS que remite información a SUSALUD", length: 8, initial_position: 243 },
+    // { number_field: 33, field: "Periodo de envío a  SUSALUD", length: 6, initial_position: 2951 },
 ]
 const date_fields = [
     { number_field: 1, field: "Ruc del prestador o IPRESS", length: 11, initial_position: 1 },
@@ -97,37 +96,12 @@ const date_fields = [
     { number_field: 48, field: "Total de Gastos Cubiertos sin IGV", length: 12, initial_position: 399 },
     { number_field: 49, field: "Estado del Paciente", length: 1, initial_position: 411 },
     { number_field: 50, field: "Fecha de Nacimiento del Paciente", length: 8, initial_position: 412 },
-    { number_field: 52, field: "Sexo del Paciente", length: 1, initial_position: 420 },
-    { number_field: 53, field: "Filiación del Paciente", length: 2, initial_position: 421 },
-    { number_field: 54, field: "Total Liquidado por las IAFAS", length: 12, initial_position: 423 },
-    { number_field: 55, field: "Número de Liquidación asignado por la IAFAS", length: 14, initial_position: 435 },
-    { number_field: 56, field: "Fecha de Liquidación", length: 8, initial_position: 449 },
+    { number_field: 51, field: "Sexo del Paciente", length: 1, initial_position: 420 },
+    { number_field: 52, field: "Filiación del Paciente", length: 2, initial_position: 421 },
+    { number_field: 53, field: "Total Liquidado por las IAFAS", length: 12, initial_position: 423 },
+    { number_field: 54, field: "Número de Liquidación asignado por la IAFAS", length: 14, initial_position: 435 },
+    { number_field: 55, field: "Fecha de Liquidación", length: 8, initial_position: 449 },
 
-]
-const dser_fields = [
-    { number_field: 1, field: "RUC del prestador o IPRESS", length: 11, initial_position: 1 },
-    { number_field: 2, field: "Código IPRESS", length: 8, initial_position: 12 },
-    { number_field: 3, field: "Tipo Documento de Pago",length: 2, initial_position: 20 },
-    { number_field: 4, field: "Número de Documento de Pago", length: 12, initial_position: 22 },
-    { number_field: 5, field: "Correlativo de la prestación", length: 5, initial_position: 34 },
-    { number_field: 6, field: "Código de prestación Interno de la IPRESS", length: 4, initial_position: 39 },
-    { number_field: 7, field: "Tipo de Afiliación del Paciente", length: 4, initial_position: 43 },
-    { number_field: 8, field: "Código de Asegurado del Paciente", length: 2, initial_position: 45 },
-    { number_field: 9, field: "Tipo de documento de identidad", length: 10, initial_position: 55 },
-    { number_field: 10, field: "Número del documento de identidad", length: 70, initial_position: 125 },
-    { number_field: 11, field: "Número de Historia Clínica", length: 8, initial_position: 133 },
-    { number_field: 12, field: "Documento de autorización de la prestación", length: 2, initial_position:135 },
-    { number_field: 13, field: "Número del documento de autorización.", length: 6, initial_position: 141 },
-    { number_field: 14, field: "Segundo Documento de autorización de la prestación", length: 1, initial_position: 142 },
-    { number_field: 15, field: "Número del segundo documento de autorización.", length: 15, initial_position: 157 },
-    { number_field: 16, field: "Tipo de Cobertura o Tipo de Prestación", length: 5, initial_position: 162 },
-    { number_field: 17, field: "Subtipo de cobertura", length: 12, initial_position: 174 },
-    { number_field: 18, field: "Primer Diagnóstico (CIE10)", length: 12, initial_position: 186 },
-    { number_field: 19, field: "Segundo Diagnóstico (CIE10)", length: 12, initial_position: 198 },
-    { number_field: 20, field: "Tercer diagnóstico (CIE10)", length: 12, initial_position: 210 },
-    { number_field: 21, field: "Fecha de Prestación", length: 5, initial_position: 222 },
-    { number_field: 22, field: "Hora de Inicio de la Prestación", length: 1, initial_position: 227 },
-    { number_field: 23, field: "Tipo del Profesional Responsable de la Prestación", length: 2, initial_position: 228 }
 ]
 const dfar_fields = [
     { number_field: 1, field: "RUC del prestador o IPRESS", length: 11, initial_position: 1 },
@@ -137,20 +111,48 @@ const dfar_fields = [
     { number_field: 5, field: "Correlativo de la prestación", length: 5, initial_position: 34 },
     { number_field: 6, field: "Correlativo de los Productos de Farmacia de la atención", length: 4, initial_position: 39 },
     { number_field: 7, field: "Tipo de producto", length: 1, initial_position: 43 },
-    { number_field: 7, field: "Catálogo de Producto de Farmacia", length: 1, initial_position: 44 },
-    { number_field: 8, field: "Código de Producto Farmacia", length: 15, initial_position: 45 },
-    { number_field: 9, field: "Código de producto del observatorio de medicamentos de la DIGEMID", length: 6, initial_position: 58 },
-    { number_field: 10, field: "Fecha de Dispensación de Farmacia", length: 8, initial_position: 66 },
-    { number_field: 11, field: "Cantidad de Venta del Producto", length: 7, initial_position: 73 },
-    { number_field: 12, field: "Monto Unitario sin Impuesto (*)", length: 12, initial_position: 74 },
-    { number_field: 13, field: "Copago del Producto de Farmacia (*)", length: 12, initial_position: 86 },
-    { number_field: 14, field: "Monto(s) Presentado(s) de (los) Producto(s) de Farmacia (*)", length: 12, initial_position: 98 },
-    { number_field: 15, field: "Monto(s) No Cubierto(s) de (los) Producto(s) de Farmacia (*)", length: 12, initial_position: 110 },
-    { number_field: 16, field: "Diagnóstico Asociado al Producto de Farmacia", length: 5, initial_position: 122 },
-    { number_field: 17, field: "Productos Exento de IGV", length: 1, initial_position: 127 },
-    { number_field: 18, field: "Guía de farmacia", length: 12, initial_position: 128 },
+    { number_field: 8, field: "Catálogo de Producto de Farmacia", length: 1, initial_position: 44 },
+    { number_field: 9, field: "Código de Producto Farmacia", length: 15, initial_position: 45 },
+    { number_field: 10, field: "Código de producto del observatorio de medicamentos de la DIGEMID", length: 6, initial_position: 58 },
+    { number_field: 11, field: "Fecha de Dispensación de Farmacia", length: 8, initial_position: 66 },
+    { number_field: 12, field: "Cantidad de Venta del Producto", length: 7, initial_position: 73 },
+    { number_field: 13, field: "Monto Unitario sin Impuesto (*)", length: 12, initial_position: 74 },
+    { number_field: 14, field: "Copago del Producto de Farmacia (*)", length: 12, initial_position: 86 },
+    { number_field: 15, field: "Monto(s) Presentado(s) de (los) Producto(s) de Farmacia (*)", length: 12, initial_position: 98 },
+    { number_field: 16, field: "Monto(s) No Cubierto(s) de (los) Producto(s) de Farmacia (*)", length: 12, initial_position: 110 },
+    { number_field: 17, field: "Diagnóstico Asociado al Producto de Farmacia", length: 5, initial_position: 122 },
+    { number_field: 18, field: "Productos Exento de IGV", length: 1, initial_position: 127 },
+    { number_field: 19, field: "Guía de farmacia", length: 12, initial_position: 128 },
 ]
-getListTramas(dfac_path,dfac_fields)
-getListTramas(date_path,date_fields)
-getListTramas(dser_path,dser_fields)
-getListTramas(dfar_path,dfar_fields)
+const dser_fields = [
+    { number_field: 1, field: "RUC del prestador o IPRESS", length: 11, initial_position: 1 },
+    { number_field: 2, field: "Código IPRESS", length: 8, initial_position: 12 },
+    { number_field: 3, field: "Tipo Documento de Pago",length: 2, initial_position: 20 },
+    { number_field: 4, field: "Número de Documento de Pago", length: 12, initial_position: 22 },
+    { number_field: 5, field: "Correlativo de la prestación", length: 5, initial_position: 34 },
+    { number_field: 6, field: "Código de prestación Interno de la IPRESS", length: 4, initial_position: 39 },
+    { number_field: 7, field: "Tipo Clasificación de Procedimiento y/o Servicio", length: 4, initial_position: 43 },
+    { number_field: 8, field: "Código de Clasificación de Procedimiento y/o Servicio", length: 2, initial_position: 45 },
+    { number_field: 9, field: "Descripción del Servicio", length: 70, initial_position: 55 },
+    { number_field: 10, field: "Fecha del procedimiento o servicio complementario", length: 70, initial_position: 125 },
+    { number_field: 11, field: "Tipo del Profesional Responsable de la Prestación", length: 8, initial_position: 133 },
+    { number_field: 12, field: "Número de Colegiatura del Profesional Responsable de la Prestación", length: 2, initial_position:135 },
+    { number_field: 13, field: "Tipo de documento de identidad del Profesional Responsable de la Prestación", length: 1, initial_position: 141 },
+    { number_field: 14, field: "Número del documento de identidad del profesional responsable", length: 15, initial_position: 142 },
+    { number_field: 15, field: "Número de veces que se brindó el procedimiento o servicio complementario", length: 5, initial_position: 157 },
+    { number_field: 16, field: "Monto unitario sin impuestos (*)", length: 5, initial_position: 162 },
+    { number_field: 17, field: "Copago variable por procedimiento o servicio complementario (*)", length: 12, initial_position: 174 },
+    { number_field: 18, field: "Copago fijo por procedimiento o servicio complementario (*)", length: 12, initial_position: 186 },
+    { number_field: 19, field: "Monto Presentado de (los) procedimiento(s) o  servicio(s) complementario(s) (*)", length: 12, initial_position: 198 },
+    { number_field: 20, field: "Monto No Cubierto de (los) procedimiento(s) o  servicio(s) complementario(s) (*)", length: 12, initial_position: 210 },
+    { number_field: 21, field: "Diagnóstico Asociado", length: 5, initial_position: 222 },
+    { number_field: 22, field: "Servicio Exento de Impuestos", length: 1, initial_position: 227 },
+    { number_field: 23, field: "Código Rubro", length: 2, initial_position: 228 }
+]
+getListTramas(dfac_path,dfac_fields,"anexo-2-dfac")
+getListTramas(date_path,date_fields,"anexo-2-date")
+getListTramas(dser_path,dser_fields,"anexo-2-dser")
+getListTramas(dfar_path,dfar_fields,"anexo-2-dfar")
+module.exports = {
+    date_fields
+}
